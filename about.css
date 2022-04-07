@@ -1,0 +1,209 @@
+.content img{
+  height:300px;
+  width: 300px;
+}
+.list a{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 60px;
+  margin-left: 60px;
+}
+.paragra{
+  margin-bottom:60px;
+  animation-name:fadeInAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  opacity:0;
+}
+
+
+
+.btn{
+  /*アニメーションの起点とするためrelativeを指定*/
+  position: relative;
+overflow: hidden;
+  /*ボタンの形状*/
+text-decoration: none;
+display: inline-block;
+  border: 1px solid #555;/* ボーダーの色と太さ */
+  padding: 10px 30px;
+  text-align: center;
+  outline: none;
+  /*アニメーションの指定*/   
+  transition: ease .2s;
+}
+
+/*ボタン内spanの形状*/
+.btn span {
+position: relative;
+z-index: 3;/*z-indexの数値をあげて文字を背景よりも手前に表示*/
+color:#333;
+}
+
+.btn:hover span{
+color:#fff;
+}
+
+/*== 背景が流れる（斜め） */
+.bgskew::before {
+content: '';
+  /*絶対配置で位置を指定*/
+position: absolute;
+top: 0;
+left: -130%;
+  /*色や形状*/
+background:#333;
+width:120%;
+height: 100%;
+transform: skewX(-25deg);
+}
+
+/*hoverした時のアニメーション*/
+.bgskew:hover::before {
+animation: skewanime .5s forwards;/*アニメーションの名前と速度を定義*/
+}
+
+@keyframes skewanime {
+100% {
+  left:-10%;/*画面の見えていない左から右へ移動する終了地点*/
+}
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+body{
+  vertical-align:middle; 
+  padding: 100px 0;
+  text-align: center;
+}
+
+p{
+  margin: 0 0 10px 0;
+}
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+#splash {
+  /*fixedで全面に固定*/
+position: fixed;
+width: 100%;
+height: 100%;
+z-index: 999;
+text-align:center;
+color:#fff;
+}
+
+/* Loading画像中央配置　*/
+#splash_text {
+position: absolute;
+top: 50%;
+left: 50%;
+  z-index: 999;
+transform: translate(-50%, -50%);
+color: #fff;
+width: 100%;
+}
+
+
+/*割れる画面のアニメーション*/
+.loader_cover {
+  width: 100%;
+  height: 50%;
+  background-color: #333;
+  transition: all .2s cubic-bezier(.04, .435, .315, .9);
+  transform: scaleY(1);
+}
+/*上の画面*/
+.loader_cover-up {
+  transform-origin: center top;
+}
+
+/*下の画面*/
+.loader_cover-down {
+  position: absolute;
+  bottom: 0;
+  transform-origin: center bottom;
+}
+/*クラス名がついたらY軸方向に0*/
+.coveranime {
+  transform: scaleY(0);
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+
+#container{
+  width:100%;
+  height: 60vh;
+	background-size: 100% auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation-name:fadeInAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  opacity:0;
+    
+}
+
+@keyframes fadeInAnime{
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+a{
+  color: #333;
+}
+
+a:hover{
+   text-decoration: none;   
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+.header h1{
+font-size:1.2rem;
+}
+
+.content h1{
+  font-size:90px;
+  color:black;
+}
+
+h2{
+font-size:1.2rem;
+text-align: center;
+margin: 0 0 30px 0;
+}
+
+p{
+margin-top:20px;  
+}
+
+small{
+  color:#fff;
+  display: block;
+  text-align: center;
+  }
+
+#header{
+width:100%;
+background:#333;
+color:#fff;
+text-align: center;
+padding: 20px;
+}
+
+
+#footer{
+background:#333;
+padding:20px;
+}
